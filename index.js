@@ -6,6 +6,7 @@ import express from "express";
 import transactionRoutes from "./routes/transactionRoutes.js";
 import { getEtherPrice } from "./controllers/getEtherPrice.js";
 import EtherPrice from "./models/price.js";
+import helmet from "helmet";
 const app = express();
 
 const PORT = process.env.port;
@@ -16,7 +17,6 @@ app.use("/transaction", transactionRoutes);
 const CONNECTION_URL = process.env.CONNECTION_URL;
 
 //middleware for security
-const helmet = require("helmet");
 app.use(helmet);
 
 
