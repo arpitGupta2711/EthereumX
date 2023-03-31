@@ -15,11 +15,17 @@ const PORT = process.env.port;
 app.use("/transaction", transactionRoutes);
 const CONNECTION_URL = process.env.CONNECTION_URL;
 
+//middleware for security
+const helmet = require("helmet");
+app.use(helmet);
+
 
 //home page 
 app.get('/',(req,res)=>{
     res.send('This is a KoinX server. Use endpoints "/transaction/address_of_user" to get the transactions of a user and "/transaction/balance/address_of_the_user" to get the balance of the ether and current price. Please note that the ether price is in wei, where 1 eth = 10^18 wei')
 })
+
+
 
 //connecting to mongoose and on successfull connection starting our server
 mongoose
